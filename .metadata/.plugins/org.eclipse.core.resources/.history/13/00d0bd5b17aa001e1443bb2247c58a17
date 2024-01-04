@@ -1,0 +1,16 @@
+package ex03;
+
+import java.util.Scanner;
+
+public class Ex06 {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int m, h;
+		m = sc.nextInt();
+		h = sc.nextInt();
+		int hour = 12*h;
+		int minute = 60*h-45;// min= 60*시+분 = 하나의분으로 변환
+		
+		System.out.println(hour+"시 "+ minute);
+	}
+}

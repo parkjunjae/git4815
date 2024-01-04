@@ -1,0 +1,14 @@
+package ex03;
+
+public class Ex04 {
+	public static void main(String[] args) {
+		int a = 10;
+		int b = 20;
+		int c = 30;
+		int input = 15;
+		System.out.println(a < input && b > input);
+		System.out.println(30%5==0 || 30%7==0);
+		
+	}
+
+}

@@ -1,0 +1,57 @@
+package ex03;
+
+import java.util.Scanner;
+
+public class Ex06 {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n, a;
+		n = sc.nextInt();
+		a = sc.nextInt();
+		if(a==2) {
+		for(n = 1; n<10; n++) {
+			System.out.println( a +" *"+ n + " =" + (a * n ));
+			}
+		}
+		else if(a==3) {
+			for(n = 1; n<10; n++) {
+				System.out.println( a +" *"+ n + " =" + (a * n ));
+				}
+		}
+		else if(n==4) {
+			for(n = 1; n<10; n++) {
+				System.out.println( a +" *"+ n + " =" + (a * n ));
+				}
+		}
+		else if(n==5) {
+			for(n = 1; n<10; n++) {
+				System.out.println( a +" *"+ n + " =" + (a * n ));
+				}
+		}
+		else if(n==6) {
+			for(n = 1; n<10; n++) {
+				System.out.println( a +" *"+ n + " =" + (a * n ));
+				}
+		}
+		else if(n==7) {
+			for(n = 1; n<10; n++) {
+				System.out.println( a +" *"+ n + " =" + (a * n ));
+				}
+		}
+		else if(n==8) {
+			for(n = 1; n<10; n++) {
+				System.out.println( a +" *"+ n + " =" + (a * n ));
+				}
+		}
+		else (n==9) {
+			for(n = 1; n<10; n++) {
+				System.out.println( a +" *"+ n + " =" + (a * n ));
+				}
+		}
+		
+		
+		
+		
+	}
+
+}
