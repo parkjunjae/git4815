@@ -12,14 +12,14 @@ public class Ex06 {
 			arr[i] = sc.nextInt();
 		}
 		v=sc.nextInt();
-		int cnt=0;
+		int cnt;
 		for(int i = 0; i<n; i++) {
 			if(arr[i] == v) {
 				cnt++;
 			}
 			
 		}
-		System.out.println(cnt);
+		
 	}
 
 }
