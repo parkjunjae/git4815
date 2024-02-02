@@ -2,25 +2,24 @@ package org.example.member;
 
 import org.example.DBINFO;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class MemberDB {
     private MemberCLI cli = new MemberCLI();
-
-    // too many connection...
-    // Mysql 실시간 모든 연결...
 
     public void insert() {
         Member member = cli.inputMember();
 
         boolean result = findByEmail(member.getEmail());
 
-        if(!result) {
-            Connection con = null;
-
+        if (!result) {
             try {
                 // DB 연결하기
-                con = DriverManager.getConnection(DBINFO.url, DBINFO.user, DBINFO.password);
+                Connection con
+                        = DriverManager.getConnection(DBINFO.url, DBINFO.user, DBINFO.password);
 
                 // SQL 구문 작성하고...
                 PreparedStatement pstmt
@@ -43,35 +42,25 @@ public class MemberDB {
                 System.out.println("이쪽으로 온다.");
                 e.printStackTrace();
             }
-            finally {
-                if(con!=null) {
-                    try {
-                        con.close();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-        else{
+        } else {
             System.out.println("중복되어서 회원가입 실패");
         }
     }
 
-    public boolean findByEmail(String email){
-        try{
+    public boolean findByEmail(String email) {
+        try {
             // DB 연결하기
             Connection con
-                    = DriverManager.getConnection(DBINFO.url,DBINFO.user,DBINFO.password);
+                    = DriverManager.getConnection(DBINFO.url, DBINFO.user, DBINFO.password);
             PreparedStatement pstmt =
                     con.prepareStatement("SELECT * from member where email=?");
             pstmt.setString(1, email);
             ResultSet rs = pstmt.executeQuery();
 
-            if(rs.next()){
+            if (rs.next()) {
                 return true;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
@@ -79,24 +68,33 @@ public class MemberDB {
 
     public Member login() {
         Member member = cli.loginMember();
-        try{
+        try {
             Connection con
-                    = DriverManager.getConnection(DBINFO.url,DBINFO.user,DBINFO.password);
+                    = DriverManager.getConnection(DBINFO.url, DBINFO.user, DBINFO.password);
             PreparedStatement pstmt = con.prepareStatement(
                     "SELECT * FROM member " +
-                         "WHERE email=? AND PASSWORD=?");
+                            "WHERE email=? AND PASSWORD=?");
             pstmt.setString(1, member.getEmail());
             pstmt.setString(2, member.getPassword());
             ResultSet rs = pstmt.executeQuery();
-            if(rs.next()){
+
+            if (rs.next()) {
                 member.setRole(rs.getString("role"));
+                member.setMember_id(rs.getLong("member_id"));
+                member.setAddr(rs.getString("address"));
+                member.setName(rs.getString("name"));
+                //System.out.println(rs.getString("role"));
                 return member;
-            }else{
-                System.out.println("로그인실패 이메일과 패스워드를 확인하세요...");
+
+            } else {
+                System.out.println("로그인실패 이메일과 패스워드를 확인하세요 ");
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
         return null;
+
     }
+
 }

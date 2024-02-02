@@ -1,5 +1,7 @@
 package org.example.member;
 
+import org.example.member.Member;
+
 import java.util.Scanner;
 
 public class MemberCLI {
@@ -16,13 +18,15 @@ public class MemberCLI {
         System.out.println("패스워드를 입력 하세요.");
         String password = scan.nextLine();
 
-//        return new Member(email,null,null, password);
         return Member.builder()
                 .email(email)
                 .password(password)
                 .name(name)
                 .addr(addr)
                 .build();
+
+
+ //       return new Member(email,name,addr,password);
     }
 
     public Member loginMember(){
@@ -37,6 +41,7 @@ public class MemberCLI {
                 .email(email)
                 .password(password)
                 .build();
-//        return new Member(email,null,null, password);
+
+       // return new Member(email,null,null, password);
     }
 }

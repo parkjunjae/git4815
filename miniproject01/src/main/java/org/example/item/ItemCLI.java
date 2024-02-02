@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ItemCLI {
 
-    public Item inputItem() {
+    public Item intputItem() {
 
         Scanner scan = new Scanner(System.in);
         System.out.println("상품이름 입력하세요");
