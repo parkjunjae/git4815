@@ -1,0 +1,18 @@
+package ex03;
+
+
+public class Ex06 {
+	public static void main(String[] args) {
+		int a =10;
+		double b = 20.2;
+		System.out.println(a);
+		System.out.println(b);
+		
+		int c =(int) b;
+		float d = a;
+		System.out.println(c);
+		System.out.println(d);
+	}
+	
+
+}
